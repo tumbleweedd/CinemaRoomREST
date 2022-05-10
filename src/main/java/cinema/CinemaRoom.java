@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class CinemaRoom {
     @JsonProperty("available_seats")
     private List<Seats> seats = new ArrayList<>();
@@ -32,9 +33,6 @@ public class CinemaRoom {
                 .filter(e -> !e.isPurchased())
                 .collect(Collectors.toList());
     }
-
-
-
 
     @JsonIgnore
     public Map<String, Purchase> getTokenTicket() {
