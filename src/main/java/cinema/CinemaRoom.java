@@ -2,13 +2,18 @@ package cinema;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CinemaRoom {
     @JsonProperty("available_seats")
     private List<Seats> seats = new ArrayList<>();
@@ -21,10 +26,6 @@ public class CinemaRoom {
         availableSeats();
     }
 
-    public CinemaRoom() {
-
-    }
-
     @JsonProperty("available_seats")
     public List<Seats> getAvailableSeats() {
         return getSeats().stream()
@@ -32,25 +33,8 @@ public class CinemaRoom {
                 .collect(Collectors.toList());
     }
 
-    public int getTotalRows() {
-        return totalRows;
-    }
 
-    public void setTotalRows(int totalRows) {
-        this.totalRows = totalRows;
-    }
 
-    public int getTotalColumns() {
-        return totalColumns;
-    }
-
-    public void setTotalColumns(int totalColumns) {
-        this.totalColumns = totalColumns;
-    }
-
-    public void setSeats(List<Seats> seats) {
-        this.seats = seats;
-    }
 
     @JsonIgnore
     public Map<String, Purchase> getTokenTicket() {
